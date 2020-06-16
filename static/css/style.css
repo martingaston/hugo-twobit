@@ -1,0 +1,372 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap");
+
+:root {
+  --scale: 1.25; /* major third */
+  --size-minus-three: calc(var(--size-minus-one) / var(--scale));
+  --size-minus-two: calc(1rem / var(--scale));
+  --size-minus-one: 1rem;
+  --size-one: calc(1rem * var(--scale));
+  --size-two: calc(var(--size-one) * var(--scale));
+  --size-three: calc(var(--size-two) * var(--scale));
+  --size-four: calc(var(--size-three) * var(--scale));
+  --size-five: calc(var(--size-four) * var(--scale));
+  --colour-light-h: 120;
+  --colour-light-s: 25%;
+  --colour-light-l: 95.3%;
+  --colour-dark-h: 180;
+  --colour-dark-s: 1.4%;
+  --colour-dark-l: 13.5%;
+  --colour-light: hsl(
+    var(--colour-light-h),
+    var(--colour-light-s),
+    var(--colour-light-l)
+  );
+  --colour-dark: hsl(
+    var(--colour-dark-h),
+    var(--colour-dark-s),
+    var(--colour-dark-l)
+  );
+  --accent: hsl(
+    var(--colour-dark-h),
+    var(--colour-dark-s),
+    calc(var(--colour-dark-l) / 1.5)
+  );
+  --shadow: hsl(
+    var(--colour-dark-h),
+    var(--colour-dark-s),
+    calc(var(--colour-dark-l) / 2 / 2)
+  );
+  --background: var(--colour-dark);
+  --foreground: var(--colour-light);
+  --buttons: hsla(var(--background), 1.7);
+  --brightness: 0.7;
+  --opacity-grade-one: 0.5;
+  --opacity-grade-two: 0.2;
+  --line-height: 1.5;
+  --line-height-compact: calc(var(--scale) / 1.25);
+}
+
+@media (min-width: 40em) {
+  :root {
+    --scale: 1.5; /* perfect fifth */
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: var(--colour-light);
+    --foreground: var(--colour-dark);
+    --brightness: 0.8;
+    --opacity-grade-one: 0.7;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.hanchor {
+  font-size: 100%;
+  visibility: hidden;
+}
+
+h2:hover a {
+  text-decoration: none;
+  visibility: visible;
+}
+
+.hanchor svg {
+  margin-left: 1.5rem;
+  fill: var(--foreground);
+  height: var(--size-three);
+}
+
+#mugshot {
+  shape-rendering: geometricPrecision;
+  height: var(--size-three);
+  fill: inherit;
+}
+
+.social {
+  height: var(--size-two);
+  fill: var(--foreground);
+  opacity: var(--opacity-grade-one);
+}
+
+h6 {
+  font-size: var(--size-minus-two);
+}
+
+h5 {
+  font-size: var(--size-minus-one);
+}
+
+h4,
+p {
+  font-size: var(--size-one);
+}
+
+h3 {
+  font-size: var(--size-two);
+}
+
+h2 {
+  font-size: var(--size-three);
+}
+
+h1 {
+  font-size: var(--size-four);
+  line-height: var(--line-height-compact);
+}
+
+body {
+  line-height: var(--line-height);
+  font-family: "Source Serif Pro", serif;
+}
+
+blockquote {
+  border-left: 0.25em solid var(--colour-light);
+  padding-left: calc(var(--scale) * 1rem);
+  font-size: var(--size-one);
+  font-style: italic;
+  margin: 1.5rem;
+  margin-left: calc(1.5rem - 0.25em);
+}
+
+main {
+  max-width: 60rem;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  display: grid;
+  grid-auto-rows: auto;
+  grid-row-gap: 1.5em;
+  grid-template-columns:
+    [breakout-start] minmax(0.25em, 1em)
+    [content-start] minmax(45ch, 80ch)
+    [content-end] minmax(0.25em, 1em)
+    [breakout-end];
+}
+
+main > * {
+  grid-column: content;
+  word-wrap: break-word;
+}
+
+main > p:first-of-type::first-letter {
+  text-transform: uppercase;
+  float: left;
+  font-size: var(--size-three);
+  font-weight: 700;
+  margin: 0;
+  padding: 0.3em;
+}
+
+/* https://aj-foster.com/2015/tombstone/ */
+main > p:last-of-type::after {
+  background: currentColor;
+  content: "";
+  display: block;
+  float: right;
+  position: relative;
+  height: 1em;
+  margin-left: 1em;
+  width: 0.5em;
+}
+
+main > nav {
+  margin-top: calc(var(--line-height-compact) * 1em);
+  grid-column: content;
+  grid-row: 1 / -1;
+  text-align: right;
+}
+
+ul,
+ol {
+  margin: 0 0.5rem;
+  padding-left: 1em;
+  list-style-position: inside;
+}
+
+li {
+  font-size: var(--size-one);
+  margin-top: 0.5em;
+  line-height: var(--line-height);
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  margin-left: 1em;
+  margin-top: 0;
+  list-style: none;
+  font-size: var(--size-one);
+}
+
+img {
+  object-fit: cover;
+  grid-column: breakout;
+  width: 100%;
+}
+
+pre {
+  grid-column: breakout;
+  background: var(--background);
+  filter: brightness(var(--brightness));
+  width: 100%;
+  font-size: 0;
+  padding: 1.5rem 1rem;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+code {
+  font-family: "Source Code Pro", monospace;
+  font-size: var(--size-minus-one);
+  color: var(--foreground);
+  width: 100%;
+  overflow: auto;
+  display: block;
+}
+
+mark,
+kbd,
+p code {
+  font-family: "Source Code Pro", monospace;
+  font-size: inherit;
+  background: var(--background);
+  filter: brightness(var(--brightness));
+  padding: 0.125rem 0.25em;
+  display: inline;
+  color: inherit;
+  box-decoration-break: clone;
+}
+
+mark {
+  font-family: inherit;
+}
+
+footer {
+  margin-top: 1.5em;
+  width: 100%;
+  text-align: right;
+  opacity: var(--opacity-grade-one);
+}
+
+footer ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  margin: 0;
+}
+
+footer ul li {
+  list-style: none;
+  margin-top: 0;
+  margin-left: 1em;
+  font-size: var(--size-minus-one);
+}
+
+#tags ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin: 0;
+  padding: 0;
+}
+
+#tags li {
+  list-style: none;
+  margin-top: 0;
+  margin-right: 0.5em;
+  font-size: var(--size-minus-one);
+  text-transform: lowercase;
+  padding: 0.125em 0.5em;
+  border-radius: 0.25em;
+  box-shadow: 0 -1px var(--shadow) inset;
+  background: var(--accent);
+}
+
+hr {
+  margin: 0.5rem 0;
+  border-top: 0.125em solid var(--foreground);
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
+  text-decoration-thickness: 0.1em;
+}
+
+abbr {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
+  text-decoration-thickness: 0.1em;
+  font-style: normal;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+a:focus {
+  outline: 0.125rem solid var(--foreground);
+  outline-offset: 0.125rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  fill: var(--foreground);
+  opacity: var(--opacity-grade-one);
+}
+
+nav a:hover {
+  color: var(--foreground);
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  text-decoration-thickness: 0.125em;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.125em;
+}
+
+footer a:visited {
+  color: inherit;
+}
