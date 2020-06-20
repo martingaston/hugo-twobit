@@ -312,6 +312,10 @@ footer ul li {
   border-radius: 0.25em;
   box-shadow: 0 -1px var(--shadow) inset;
   background: var(--accent);
+} 
+
+#tags a {
+  text-decoration: none;
 }
 
 hr {
