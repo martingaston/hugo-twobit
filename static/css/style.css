@@ -232,6 +232,10 @@ img {
   width: 100%;
 }
 
+.highlight {
+  grid-column: breakout;
+}
+
 pre {
   grid-column: breakout;
   background: var(--background);
