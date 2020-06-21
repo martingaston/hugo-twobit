@@ -4,118 +4,17 @@
     {{ partial "nav.html" . }}
   </nav>
   <header>
-    {{ partial "header.html" . }}
+    {{ partial "list-header.html" . }}
   </header>
+  {{ range .Pages }}
   <p>
-    <a href="https://www.lipsum.com/">Torem ipsum dolor sit amet, consectetur adipiscing elit.</a>
-    Aliquam sagittis metus nec elit consectetur, non rhoncus augue hendrerit.
-    Donec ac volutpat lectus, sed molestie magna. Mauris ac rhoncus ex. Nam
-    aliquet sem tristique scelerisque ultrices. Proin hendrerit at enim eu
-    congue. Vestibulum imperdiet risus non laoreet sodales. Suspendisse sodales
-    eros vel nunc vulputate elementum. Sed viverra nisi vitae nibh pulvinar
-    vehicula. Nam ac posuere nibh, eu malesuada enim.
+    <a href="{{ .Permalink }}">
+      <h2>{{ .Title }}</h2>
+      <time datetime="2011-11-18T14:54:39.929Z">{{ .Date.Format "June 06, 2006" }}</time> ::
+      <time datetime="PT5M">{{ .ReadingTime }} minutes</time>
+    </a>
   </p>
-  <p>abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefgh</p>
-  <p>
-    <a href="https://www.lipsum.com/">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
-    Aliquam sagittis metus nec elit consectetur, non rhoncus augue hendrerit.
-    Donec ac volutpat lectus, sed molestie magna. Mauris ac rhoncus ex. Nam
-    aliquet sem tristique scelerisque ultrices. Proin hendrerit at enim eu
-    congue. Vestibulum imperdiet risus non laoreet sodales. Suspendisse sodales
-    eros vel nunc vulputate elementum. Sed viverra nisi vitae nibh pulvinar
-    vehicula. Nam ac posuere nibh, eu malesuada enim.
-  </p>
-  <h2>Subheading 1</h2>
-  <p>Ut venenatis posuere arcu mollis vehicula:</p>
-  <ul>
-    <li>Aenean eu metus justo.</li>
-    <li>
-      Donec feugiat tortor sed felis tristique, quis viverra justo auctor.
-    </li>
-    <li>
-      Cras enim nisl, ornare in gravida in, pulvinar ac eros. Nullam faucibus
-      ante dui, quis pretium velit rutrum non.
-    </li>
-  </ul>
-  <ol>
-    <li>Aenean eu metus justo.</li>
-    <li>
-      Donec feugiat tortor sed felis tristique, quis viverra justo auctor.
-    </li>
-    <li>
-      Cras enim nisl, ornare in gravida in, pulvinar ac eros. Nullam faucibus
-      ante dui, quis pretium velit rutrum non.
-    </li>
-  </ol>
-  <p>
-    Pellentesque sed vestibulum quam. Suspendisse felis diam, facilisis rutrum
-    massa a, faucibus tincidunt massa. Phasellus at pulvinar tortor. Sed
-    pharetra imperdiet tellus lacinia efficitur. Sed vel nibh dolor. Phasellus
-    turpis purus, egestas sed eros vel, tincidunt tempus odio.
-  </p>
-  <h2>Subheading 2</h2>
-  <img
-    src="https://images.unsplash.com/photo-1567326619821-2664df9c48da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
-  <p>
-    Nam sagittis ex a odio mattis mattis. Interdum et malesuada fames ac ante
-    ipsum primis in faucibus. Duis in velit velit. Phasellus in ullamcorper
-    arcu, ut ultrices magna.
-  </p>
-  <blockquote>
-    Aliquam facilisis enim lorem, eget luctus urna dapibus quis. Pellentesque at
-    accumsan lorem, ut varius quam. Nam eleifend urna quis pellentesque dapibus.
-    Vivamus eros nulla, mattis in elit sed, lacinia rutrum odio. Quisque congue
-    tellus libero, vel pretium turpis semper a. Aliquam dapibus gravida diam non
-    aliquam. Morbi blandit ante non est faucibus, eget porttitor tellus ornare.
-  </blockquote>
-  <h2>Subheading 3</h2>
-  <h1>h1</h1>
-  <h2>h2</h2>
-  <h3>h3</h3>
-  <h4>h4</h4>
-  <h5>h5</h5>
-  <h6>h6</h6>
-  <p>
-    <strong>In condimentum vulputate eros et rutrum.</strong> Nulla
-    <code>Object object = new Object()</code> felis dui, vestibulum ut tincidunt
-    ut, facilisis vitae metus.
-    <em>Cras iaculis lacus tellus, at dapibus elit aliquet ut.</em> Proin
-    rhoncus vehicula eros egestas maximus. Fusce lorem lorem, cursus et libero
-    a, sagittis rhoncus neque. Ut id malesuada sapien.
-  </p>
-  <h2>Subheading 4</h2>
-  <pre>
-      <code>function fibonacci(number) {
-        if (number <= 1) {
-          return 1;
-        }
-        
-        return fibonacci(number - 1) + fibonacci(number - 2);
-      }
-      
-      const f = n => n <= 1 ? 1 : f(n - 1) + f(n - 2) // codegolf</code>
-      </pre>
-  <p>
-    Phasellus vitae metus euismod, finibus dolor id, convallis turpis. Quisque
-    tortor nulla, semper quis malesuada nec, luctus non massa. Ut eros quam,
-    sollicitudin in fringilla in, bibendum a sapien. Etiam quis ornare felis.
-    Vivamus sollicitudin mi nec nisl viverra fringilla. Ut ornare nulla a
-    ultricies aliquet. Nam congue a lacus vel pulvinar. Proin pellentesque, arcu
-    a ultrices molestie, ligula eros sagittis lectus, ut elementum metus metus
-    vitae elit.
-    <mark>Nulla imperdiet orci non ex feugiat ultricies.</mark>
-    <kbd>ESC</kbd>
-    <dfn><abbr title="Cascading Style Sheets">CSS</abbr></dfn>
-  </p>
-  <p>
-    <var>a<sup>2</sup></var> + <var>b<sup>2</sup></var> =
-    <var>c<sup>2</sup></var>
-  </p>
-  <p>
-    Almost every developer's favorite molecule is
-    C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>, also known as
-    "caffeine."
-  </p>
+  {{ end }}
   <footer>
     {{ partial "footer.html" . }}
   </footer>
