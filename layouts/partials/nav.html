@@ -17,7 +17,11 @@
     </svg>
 </a>
 <ul>
-    <li><a href="#">Posts</a></li>
-    <li><a href="#">Speaking</a></li>
-    <li><a href="#">CV</a></li>
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+    <!-- https://discourse.gohugo.io/t/solved-menu-not-being-set-to-active/16959/6 -->
+    {{ $active := or (eq $.URL .URL) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+    <li><a {{ if $active }}class="active" {{ end }} href="{{ .URL }}">{{ .Name }}</a>
+    </li>
+    {{ end }}
 </ul>

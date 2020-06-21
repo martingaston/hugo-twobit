@@ -358,7 +358,7 @@ nav a {
   opacity: var(--opacity-grade-one);
 }
 
-nav a:hover {
+nav a:hover, nav a.active {
   color: var(--foreground);
   opacity: 1;
   text-decoration: underline;
