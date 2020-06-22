@@ -76,9 +76,14 @@ body {
   color: var(--foreground);
 }
 
-.hanchor {
-  font-size: 100%;
-  visibility: hidden;
+@media (hover: hover) {
+  .hanchor {
+    visibility: hidden;
+  }
+}
+
+h2 a {
+  display: flex;
 }
 
 h2:hover a {
@@ -86,10 +91,10 @@ h2:hover a {
   visibility: visible;
 }
 
-.hanchor svg {
-  margin-left: 1.5rem;
+h2 a svg {
+  margin-left: 1rem;
   fill: var(--foreground);
-  height: var(--size-three);
+  height: var(--size-two);
 }
 
 #mugshot {
@@ -123,6 +128,8 @@ h3 {
 
 h2 {
   font-size: var(--size-three);
+  display: flex;
+  align-items: center;
 }
 
 h1 {

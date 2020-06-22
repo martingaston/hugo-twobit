@@ -6,7 +6,9 @@
   <header>
     {{ partial "header.html" . }}
   </header>
-  {{ .Content }}
+  {{- with .Content -}}
+  {{ partial "anchorise.html" . }}
+  {{ end }}
   <footer>
     {{ partial "footer.html" . }}
   </footer>
