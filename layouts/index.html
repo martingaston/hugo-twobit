@@ -1,0 +1,24 @@
+{{ define "main" }}
+<main>
+    <nav>
+        {{ partial "nav.html" . }}
+    </nav>
+    <header>
+        {{ partial "list-header.html" . }}
+    </header>
+    {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+    {{ range first 3 $pages }}
+    <h2>
+        {{ .Title }}
+    </h2>
+    <h5>
+        <time datetime="2011-11-18T14:54:39.929Z">{{ .Date.Format "June 06, 2006" }}</time> ::
+        <time datetime="PT5M">{{ .ReadingTime }} minutes</time>
+    </h5>
+    {{ .Summary }}
+    {{ end }}
+    <footer>
+        {{ partial "footer.html" . }}
+    </footer>
+</main>
+{{ end }}
