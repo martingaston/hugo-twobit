@@ -170,7 +170,25 @@ main > * {
   word-wrap: break-word;
 }
 
-main > p:first-of-type::first-letter {
+article {
+  grid-column: breakout;
+  width: 100%;
+  display: grid;
+  grid-auto-rows: auto;
+  grid-row-gap: 1.5em;
+  grid-template-columns:
+    [breakout-start] minmax(0.25em, 1em)
+    [content-start] minmax(45ch, 80ch)
+    [content-end] minmax(0.25em, 1em)
+    [breakout-end];
+}
+
+article > * {
+  grid-column: content;
+  word-wrap: break-word;
+}
+
+article > p:first-of-type::first-letter {
   text-transform: uppercase;
   float: left;
   font-size: var(--size-three);
@@ -180,7 +198,7 @@ main > p:first-of-type::first-letter {
 }
 
 /* https://aj-foster.com/2015/tombstone/ */
-main > p:last-of-type::after {
+article > p:last-of-type::after {
   background: currentColor;
   content: "";
   display: block;
@@ -323,11 +341,6 @@ footer ul li {
 
 #tags a {
   text-decoration: none;
-}
-
-hr {
-  margin: 0.5rem 0;
-  border-top: 0.125em solid var(--foreground);
 }
 
 a {

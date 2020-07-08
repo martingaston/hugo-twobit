@@ -3,14 +3,17 @@
   <nav>
     {{ partial "nav.html" . }}
   </nav>
-  <header>
-    {{ partial "header.html" . }}
-  </header>
-  {{- with .Content -}}
-  {{ partial "anchorise.html" . }}
-  {{ end }}
-  <footer>
-    {{ partial "footer.html" . }}
-  </footer>
+
+  <article>
+    <header>
+      {{ partial "header.html" . }}
+    </header>
+    {{- with .Content -}}
+    {{ partial "anchorise.html" . }}
+    {{ end }}
+    <footer>
+      {{ partial "footer.html" . }}
+    </footer>
+  </article>
 </main>
 {{ end }}
