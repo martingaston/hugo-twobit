@@ -1,21 +1,30 @@
 {{ define "main" }}
 <main>
-  <nav>
-    {{ partial "nav.html" . }}
-  </nav>
-
   <header>
-    {{ partial "list-header.html" . }}
+    <nav>
+      {{ partial "nav.html" . }}
+    </nav>
   </header>
-  {{ range .Pages }}
-  <p>
-    <a href="{{ .Permalink }}">
-      <h2>{{ .Title }}</h2>
-      <time datetime="2011-11-18T14:54:39.929Z">{{ .Date.Format "June 06, 2006" }}</time> ::
-      <time datetime="PT5M">{{ .ReadingTime }} minutes</time>
-    </a>
-  </p>
-  {{ end }}
+
+  <section>
+    <header>
+      {{ partial "list-header.html" . }}
+    </header>
+    {{ $pages := .Pages }}
+    {{ if .IsHome }}
+    {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+    {{ end }}
+    {{ range $pages }}
+    <p>
+      <a href="{{ .Permalink }}">
+        <h2>{{ .Title }}</h2>
+        <time datetime="2011-11-18T14:54:39.929Z">{{ .Date.Format "June 06, 2006" }}</time> ::
+        <time datetime="PT5M">{{ .ReadingTime }} minutes</time>
+      </a>
+    </p>
+    {{ end }}
+  </section>
+
   <footer>
     {{ partial "footer.html" . }}
   </footer>
