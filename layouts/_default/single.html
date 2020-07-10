@@ -1,8 +1,10 @@
 {{ define "main" }}
 <main>
-  <nav>
-    {{ partial "nav.html" . }}
-  </nav>
+  <header>
+    <nav>
+      {{ partial "nav.html" . }}
+    </nav>
+  </header>
 
   <article>
     <header>
@@ -11,9 +13,10 @@
     {{- with .Content -}}
     {{ partial "anchorise.html" . }}
     {{ end }}
-    <footer>
-      {{ partial "footer.html" . }}
-    </footer>
   </article>
+
+  <footer>
+    {{ partial "footer.html" . }}
+  </footer>
 </main>
 {{ end }}
