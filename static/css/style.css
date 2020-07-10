@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap");
 
 :root {
+  --min-width: 45ch;
+  --max-width: 80ch;
   --scale: 1.25; /* major third */
   --size-minus-three: calc(var(--size-minus-one) / var(--scale));
   --size-minus-two: calc(1rem / var(--scale));
@@ -152,22 +154,24 @@ blockquote {
 }
 
 main {
-  max-width: 60rem;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  max-width: calc(var(--max-width) + 2em);
   display: grid;
-  grid-auto-rows: auto;
   grid-row-gap: 1.5em;
-  grid-template-columns:
-    [breakout-start] minmax(0.25em, 1em)
-    [content-start] minmax(45ch, 80ch)
-    [content-end] minmax(0.25em, 1em)
-    [breakout-end];
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "header" "main" "footer";
+  padding: 2em 0;
 }
 
-main > * {
-  grid-column: content;
-  word-wrap: break-word;
+main > header {
+  grid-area: header;
+}
+
+main > article {
+  grid-area: main;
+}
+
+main > footer {
+  grid-area: footer;
 }
 
 article {
@@ -178,7 +182,7 @@ article {
   grid-row-gap: 1.5em;
   grid-template-columns:
     [breakout-start] minmax(0.25em, 1em)
-    [content-start] minmax(45ch, 80ch)
+    [content-start] minmax(var(--min-width), var(--max-width))
     [content-end] minmax(0.25em, 1em)
     [breakout-end];
 }
@@ -211,9 +215,8 @@ article > p:last-of-type::after {
 
 main > nav {
   margin-top: calc(var(--line-height-compact) * 1em);
-  grid-column: content;
-  grid-row: 1 / -1;
   text-align: right;
+  width: 100%;
 }
 
 ul,
