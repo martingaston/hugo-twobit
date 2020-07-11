@@ -12,7 +12,7 @@
     </header>
     {{ $pages := .Pages }}
     {{ if .IsHome }}
-    {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+    {{ $pages = first 3 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
     {{ end }}
     {{ range $pages }}
     <div>
