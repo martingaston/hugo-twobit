@@ -4,7 +4,7 @@
         {{ partial "list-header.html" . }}
     </header>
     <ul>
-        {{ range .Site.Taxonomies.tags }}
+        {{ range .Site.Taxonomies.tags.ByCount }}
         <li>
             <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> ({{ .Count }})
         </li>

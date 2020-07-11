@@ -1,7 +1,11 @@
 {{ define "main" }}
 <section>
   <header>
+    {{ if .IsHome }}
+    {{ partial "home-header.html" . }}
+    {{ else }}
     {{ partial "list-header.html" . }}
+    {{ end }}
   </header>
   {{ $pages := .Pages }}
   {{ if .IsHome }}
