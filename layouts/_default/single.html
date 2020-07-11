@@ -1,22 +1,10 @@
 {{ define "main" }}
-<main>
+<article>
   <header>
-    <nav>
-      {{ partial "nav.html" . }}
-    </nav>
+    {{ partial "header.html" . }}
   </header>
-
-  <article>
-    <header>
-      {{ partial "header.html" . }}
-    </header>
-    {{- with .Content -}}
-    {{ partial "anchorise.html" . }}
-    {{ end }}
-  </article>
-
-  <footer>
-    {{ partial "footer.html" . }}
-  </footer>
-</main>
+  {{- with .Content -}}
+  {{ partial "anchorise.html" . }}
+  {{ end }}
+</article>
 {{ end }}

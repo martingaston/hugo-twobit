@@ -16,7 +16,17 @@
 </head>
 
 <body>
-  {{ block "main" . }} {{ end }}
+  <main>
+    <header>
+      <nav>
+        {{ partial "nav.html" . }}
+      </nav>
+    </header>
+    {{ block "main" . }} {{ end }}
+    <footer>
+      {{ partial "footer.html" . }}
+    </footer>
+  </main>
 </body>
 
 </html>

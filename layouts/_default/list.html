@@ -1,35 +1,23 @@
 {{ define "main" }}
-<main>
+<section>
   <header>
-    <nav>
-      {{ partial "nav.html" . }}
-    </nav>
+    {{ partial "list-header.html" . }}
   </header>
-
-  <section>
-    <header>
-      {{ partial "list-header.html" . }}
-    </header>
-    {{ $pages := .Pages }}
-    {{ if .IsHome }}
-    {{ $pages = first 3 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-    {{ end }}
-    {{ range $pages }}
-    <div>
-      <a href="{{ .Permalink }}">
-        <h2>{{ .Title }}</h2>
-      </a>
-      <h5>
-        <time datetime="2011-11-18T14:54:39.929Z">{{ .Date.Format "June 06, 2006" }}</time> ::
-        <time datetime="PT5M">{{ .ReadingTime }} minutes</time>
-      </h5>
-    </div>
-    {{ .Summary }}
-    {{ end }}
-  </section>
-
-  <footer>
-    {{ partial "footer.html" . }}
-  </footer>
-</main>
+  {{ $pages := .Pages }}
+  {{ if .IsHome }}
+  {{ $pages = first 3 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+  {{ end }}
+  {{ range $pages }}
+  <div>
+    <a href="{{ .Permalink }}">
+      <h2>{{ .Title }}</h2>
+    </a>
+    <h5>
+      <time datetime="2011-11-18T14:54:39.929Z">{{ .Date.Format "June 06, 2006" }}</time> ::
+      <time datetime="PT5M">{{ .ReadingTime }} minutes</time>
+    </h5>
+  </div>
+  {{ .Summary }}
+  {{ end }}
+</section>
 {{ end }}
