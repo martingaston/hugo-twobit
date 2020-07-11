@@ -12,10 +12,7 @@
     <a href="{{ .Permalink }}">
       <h2>{{ .Title }}</h2>
     </a>
-    <h5>
-      <time datetime="2011-11-18T14:54:39.929Z">{{ .Date.Format "June 06, 2006" }}</time> ::
-      <time datetime="PT5M">{{ .ReadingTime }} minutes</time>
-    </h5>
+    {{ partial "date.html" . }}
   </div>
   {{ .Summary }}
   {{ end }}
