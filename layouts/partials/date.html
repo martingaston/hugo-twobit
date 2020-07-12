@@ -1,0 +1,15 @@
+<!-- https://ar.al/2018/06/17/formatting-an-iso-8601-date-stamp-in-hugo/ -->
+<h5>
+    <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}">{{ .Date.Format "June 06, 2006" }}</time> ::
+    {{ $readingTime := .ReadingTime }}
+    {{ if lt $readingTime 60 }}
+    {{ $minutes := mod $readingTime 60 }}
+    <time datetime="PT{{ $readingTime }}M">{{ $readingTime }} minute{{ cond (gt $minutes 1) "s" "" }}</time>
+    {{ end }}
+    {{ if ge $readingTime 60 }}
+    {{ $hours := div $readingTime 60 }}
+    {{ $minutes := mod $readingTime 60 }}
+    <time datetime="PT{{ $hours }}H{{ $minutes}}M">{{ $hours }} hour{{ cond (gt $hours 1) "s" "" }}
+        {{ $minutes }} minutes</time>
+    {{ end }}
+</h5>

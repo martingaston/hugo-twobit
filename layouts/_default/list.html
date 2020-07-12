@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section>
+  <header>
+    {{ if .IsHome }}
+    {{ partial "home-header.html" . }}
+    {{ else }}
+    {{ partial "list-header.html" . }}
+    {{ end }}
+  </header>
+  {{ $pages := .Pages }}
+  {{ if .IsHome }}
+  {{ $pages = first 3 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+  {{ end }}
+  {{ range $pages }}
+  <div>
+    <a href="{{ .Permalink }}">
+      <h2>{{ .Title }}</h2>
+    </a>
+    {{ partial "date.html" . }}
+  </div>
+  {{ .Summary }}
+  {{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,10 @@
+{{ define "main" }}
+<article>
+  <header>
+    {{ partial "header.html" . }}
+  </header>
+  {{- with .Content -}}
+  {{ partial "anchorise.html" . }}
+  {{ end }}
+</article>
+{{ end }}

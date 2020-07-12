@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html>
-    {{- partial "head.html" . -}}
-    <body>
-        {{- partial "header.html" . -}}
-        <div id="content">
-        {{- block "main" . }}{{- end }}
-        </div>
-        {{- partial "footer.html" . -}}
-    </body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {{ block "title" . }}
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  {{ end }}
+  <link rel="stylesheet" href="/css/style.css" />
+  {{ if .Params.canonical }}
+  <link rel="canonical" href="{{ .Params.canonical }}">
+  {{ else }}
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ end }}
+  {{ range .AlternativeOutputFormats -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+</head>
+
+<body>
+  <main>
+    <header>
+      <nav>
+        {{ partial "nav.html" . }}
+      </nav>
+    </header>
+    {{ block "main" . }} {{ end }}
+    <footer>
+      {{ partial "footer.html" . }}
+    </footer>
+  </main>
+</body>
+
 </html>

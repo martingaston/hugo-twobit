@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section>
+    <header>
+        {{ partial "list-header.html" . }}
+    </header>
+    {{ range .Pages }}
+    <div>
+        <a href="{{ .Permalink }}">
+            <h2>{{ .Title }}</h2>
+        </a>
+        {{ partial "date.html" . }}
+    </div>
+    {{ .Summary }}
+    {{ end }}
+</section>
+{{ end }}
