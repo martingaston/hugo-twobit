@@ -7,7 +7,7 @@
     {{ partial "list-header.html" . }}
     {{ end }}
   </header>
-  {{ $pages := .Pages }}
+  {{ $pages := .Paginator.Pages }}
   {{ if .IsHome }}
   {{ $pages = first 3 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
   {{ end }}
@@ -19,6 +19,11 @@
     {{ partial "date.html" . }}
   </div>
   {{ .Summary }}
+  {{ end }}
+  {{ if (not .IsHome) }}
+  <nav id="pagination">
+    {{ template "_internal/pagination.html" . }}
+  </nav>
   {{ end }}
 </section>
 {{ end }}
