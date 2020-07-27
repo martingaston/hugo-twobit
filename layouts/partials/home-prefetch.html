@@ -1,0 +1,6 @@
+{{ if .IsHome }}
+{{ $pages := (first 3 (where site.RegularPages "Type" "in" site.Params.mainSections)) }}
+{{ range $pages }}
+<link rel="prefetch" href="{{ .Permalink }}" as="document" />
+{{ end}}
+{{ end }}
