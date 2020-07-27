@@ -7,10 +7,7 @@
     {{ partial "list-header.html" . }}
     {{ end }}
   </header>
-  {{ $pages := .Paginator.Pages }}
-  {{ if .IsHome }}
-  {{ $pages = first 3 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-  {{ end }}
+  {{ $pages := (cond .IsHome (first 3 (where site.RegularPages "Type" "in" site.Params.mainSections)) .Paginator.Pages )}}
   {{ range $pages }}
   <div>
     <a href="{{ .Permalink }}">
