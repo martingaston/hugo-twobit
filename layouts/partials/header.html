@@ -1,11 +1,12 @@
-<h1>{{ .Title }}</h1>
+<h1 class="p-name">{{ .Title }}</h1>
 {{ partial "date.html" . }}
 {{ with .Params.tags }}
 <section id="tags">
     <ul>
         {{ range . }}
-        <li><a href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a></li>
+        <li><a class="p-category" href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a></li>
         {{ end }}
     </ul>
 </section>
 {{ end }}
+<div class="p-summary" hidden>{{ .Summary }}</div>
