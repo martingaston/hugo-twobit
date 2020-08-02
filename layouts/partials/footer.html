@@ -1,12 +1,12 @@
 <div hidden>
-    <img class="u-photo" src="" alt="profile picture">
-    <a class="u-email" href="mailto:hello@martingaston.dev" rel="me">hello@martingaston.dev</a>
-    <a class="p-name u-url" href="https://martingaston.dev">Martin Gaston</a>
+  <img class="u-photo" src="{{ .Site.Params.profilePictureURL }}" alt="{{ .Site.Params.author }}">
+    <a class="u-email" href="mailto:{{ .Site.Params.contactEmail }}" rel="me">{{ .Site.Params.contactEmail }}</a>
+    <a class="p-name u-url" href="{{ .Site.BaseURL }}">{{ .Site.Params.author }}</a>
     <p class="p-note">
-        Martin is a professional software consultant based in the United Kingdom.
+      {{ .Site.Params.bio }}
     </p>
-    <a class="p-org h-card" href="https://www.8thlight.com">8th Light</a>
-    <p class="p-country-name">United Kingdom</p>
+    <a class="p-org h-card" href="{{ .Site.Params.employerURL }}">{{ .Site.Params.employerTitle }}</a>
+    <p class="p-country-name">{{ .Site.Params.country }}</p>
 </div>
 <div>
     <ul>
