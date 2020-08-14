@@ -15,7 +15,7 @@
     </a>
     {{ partial "date.html" . }}
   </div>
-  {{ .Summary }}
+  <p>{{ .Summary }}</p>
   {{ end }}
   {{ if (not .IsHome) }}
   <nav id="pagination">
