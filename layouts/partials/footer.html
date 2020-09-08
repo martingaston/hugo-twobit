@@ -1,7 +1,7 @@
 <div hidden>
     <img class="u-photo" src="{{ .Site.Params.profilePictureURL }}" alt="{{ .Site.Params.author }}">
     <a class="u-email" href="mailto:{{ .Site.Params.contactEmail }}" rel="me">{{ .Site.Params.contactEmail }}</a>
-    <a class="p-name u-url" href="{{ .Site.BaseURL }}">{{ .Site.Params.author }}</a>
+    <a class="p-name u-url u-uid" rel="me" href="{{ .Site.BaseURL }}">{{ .Site.Params.author }}</a>
     <p class="p-note">
         {{ .Site.Params.bio }}
     </p>
