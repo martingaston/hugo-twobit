@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {{ with .Site.Params.description }}<meta name="description" content="{{.}}" />{{ end }}
   {{ block "title" . }}
-  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <title>{{ if .IsHome }}{{ .Site.Params.title }}{{ else }}{{ .Title }} | {{ .Site.Params.title }}{{ end }}</title>
   {{ end }}
   <link rel="stylesheet" href="/css/style.css" />
   {{ if .Params.canonical }}
@@ -17,6 +18,9 @@
   {{ range .AlternativeOutputFormats -}}
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+  {{ template "_internal/schema.html" . }}
 </head>
 
 <body>

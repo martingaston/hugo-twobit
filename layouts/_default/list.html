@@ -1,11 +1,7 @@
 {{ define "main" }}
 <section>
   <header>
-    {{ if .IsHome }}
-    {{ partial "home-header.html" . }}
-    {{ else }}
-    {{ partial "list-header.html" . }}
-    {{ end }}
+    <h1>{{ .Title }}</h1>
   </header>
   {{ $pages := (cond .IsHome (first (or .Site.Params.HomeEntries 3) (where site.RegularPages "Type" "in" site.Params.mainSections)) .Paginator.Pages )}}
   {{ range $pages }}
