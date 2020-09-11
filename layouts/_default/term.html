@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section>
     <header>
-        {{ partial "list-header.html" . }}
+        <h1>{{ humanize .Title }}</h1>
     </header>
     {{ range .Pages }}
     <div>
@@ -10,7 +10,7 @@
         </a>
         {{ partial "date.html" . }}
     </div>
-    {{ .Summary }}
+    <p>{{ .Summary }}</p>
     {{ end }}
 </section>
 {{ end }}

@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section>
     <header>
-        {{ partial "list-header.html" . }}
+        <h1>{{ .Title }}</h1>
     </header>
     <ul>
         {{ range .Site.Taxonomies.tags.ByCount }}

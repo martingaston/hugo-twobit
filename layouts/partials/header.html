@@ -4,7 +4,7 @@
 <section id="tags">
     <ul>
         {{ range . }}
-        <li><a class="p-category" href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a></li>
+        <li><a class="p-category" href="{{ "tags" | absURL }}/{{ . | urlize }}/">{{ . }}</a></li>
         {{ end }}
     </ul>
 </section>
