@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap");
 
 :root {
-  --min-width: 45ch;
+  --min-width: 44ch;
   --max-width: 80ch;
   --scale: 1.25; /* major third */
   --size-minus-three: calc(var(--size-minus-one) / var(--scale));
@@ -149,12 +149,7 @@ main {
   grid-row-gap: 1.5em;
   grid-template-rows: auto 1fr auto;
   grid-template-areas: "header" "main" "footer";
-}
-
-@media (min-width: 40em) {
-  main {
-    padding: 2em 0;
-  }
+  padding: 1em 0;
 }
 
 main > header {
@@ -162,6 +157,7 @@ main > header {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 0.5em;
 }
 
 main > article, main > section {
@@ -171,9 +167,9 @@ main > article, main > section {
   grid-auto-rows: auto;
   grid-row-gap: 1.5em;
   grid-template-columns:
-    [breakout-start] minmax(0.25em, 1em)
+    [breakout-start] minmax(0.5em, 1em)
     [content-start] minmax(var(--min-width), var(--max-width))
-    [content-end] minmax(0.25em, 1em)
+    [content-end] minmax(0.5em, 1em)
     [breakout-end]
 }
 
@@ -182,6 +178,21 @@ main > footer {
   width: 100%;
   text-align: right;
   opacity: var(--opacity-grade-one);
+  padding: 0 0.5em;
+}
+
+@media (min-width: 40em) {
+  main {
+    padding: 2em 0;
+  }
+
+  main > header {
+    padding: 0em;
+  }
+
+  main > footer {
+    padding: 0em;
+  }
 }
 
 main > section > * {
