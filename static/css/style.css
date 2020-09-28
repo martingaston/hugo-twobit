@@ -193,13 +193,14 @@ main > article > * {
   word-wrap: break-word;
 }
 
+/* dropcap */
 article > p:first-of-type::first-letter {
   text-transform: uppercase;
   float: left;
   font-size: var(--size-three);
   font-weight: 700;
   margin: 0;
-  padding: 0.3em;
+  padding: 0.18em 0.10em 0 0;
 }
 
 /* https://aj-foster.com/2015/tombstone/ */
