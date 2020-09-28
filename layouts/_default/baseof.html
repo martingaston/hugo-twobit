@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {{ with .Site.Params.description }}<meta name="description" content="{{.}}" />{{ end }}
+  {{ with .Site.Params.description }}
+  <meta name="description" content="{{.}}" />{{ end }}
   {{ block "title" . }}
   <title>{{ if .IsHome }}{{ .Site.Params.title }}{{ else }}{{ .Title }} | {{ .Site.Params.title }}{{ end }}</title>
   {{ end }}
@@ -21,6 +22,53 @@
   {{ template "_internal/opengraph.html" . }}
   {{ template "_internal/twitter_cards.html" . }}
   {{ template "_internal/schema.html" . }}
+  <!-- JSON-LD -->
+  {{ if .IsHome }}
+  <script type="application/ld+json">
+{ 
+  "@context": "http://schema.org", 
+  "@type": "WebSite", 
+  "url": "{{ .Permalink }}", 
+  "name": "{{ .Site.Params.title }}",
+   "author": {
+      "@type": "Person",
+      "name": "{{ .Site.Params.author }}"
+    },
+  "description": "{{ .Site.Params.description }}",
+}
+</script>
+  {{ end }}
+  {{ if .IsPage }}
+  <script type="application/ld+json">
+    {{if eq .Section "posts"}}
+    { 
+        "@context": "http://schema.org", 
+        "@type": "BlogPosting",
+        "headline": "{{ .Title }}",
+        "genre": "{{ range .Params.tags }}{{ . }}{{ end }}",  
+        "url": "{{ .Permalink }}",
+        "datePublished": "{{ time .Date }}",
+        "description": "{{ .Summary }}",
+        "author": {
+            "@type": "Person",
+            "name": "{{ .Site.Params.author }}"
+        }
+     }
+    {{ else }}
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "{{ .Permalink }}", 
+      "name": "{{ .Site.Params.title }}",
+       "author": {
+          "@type": "Person",
+          "name": "{ .Site.Params.author }}"
+        },
+      "description": "{ .Site.Params.description }}",
+    }
+    {{ end }}
+    </script>
+  {{ end }}
 </head>
 
 <body>
